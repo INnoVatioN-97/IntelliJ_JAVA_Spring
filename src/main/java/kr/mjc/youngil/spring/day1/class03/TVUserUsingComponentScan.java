@@ -10,11 +10,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class TVUserUsingComponentScan {
     public static void main(String[] args) {
         // @ComponentScan 의 basePackage 에서 @Component 로 정의된 빈들을 생성.
-        ApplicationContext context = new ClassPathXmlApplicationContext(
-                "applicationContext03-cs.xml");
+        // Java-based configuration 에서 component scan
 //        ApplicationContext context = new AnnotationConfigApplicationContext(
 //                AppConfigUsingComponentScan.class
 //        );
+
+        // XML-based configuration 에서 component scan
+        ApplicationContext context = new ClassPathXmlApplicationContext(
+                "applicationContext03-cs.xml");
 
         TV samsungTV = context.getBean(SamsungTV.class);
         samsungTV.powerOn();
