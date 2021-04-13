@@ -12,7 +12,7 @@ public class TVUser {
         LgTV lgTV = new LgTV();
         lgTV.setSpeaker(appleSpeaker);
 
-        //이상 빈에 대한 설정, 이하 빈에 대한 사용용
+        //이상 빈에 대한 설정, 이하 빈에 대한 사용
 
        samsungTV.volumeUp();
         lgTV.volumeDown();
