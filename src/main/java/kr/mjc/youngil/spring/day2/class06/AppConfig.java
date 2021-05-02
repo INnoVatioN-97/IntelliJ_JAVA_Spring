@@ -15,7 +15,6 @@ import javax.sql.DataSource;
 @ComponentScan(basePackages = "kr.mjc.youngil.spring.day2.class06")
 @PropertySource("classpath:db.properties")
 public class AppConfig {
-
     @Bean
     public DataSource dataSource(@Value("${db.url}") String dbUrl) {
         return new MariaDbDataSource(dbUrl);

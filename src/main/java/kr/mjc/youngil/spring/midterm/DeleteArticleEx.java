@@ -1,21 +1,18 @@
 package kr.mjc.youngil.spring.midterm;
 
-import kr.mjc.youngil.java.jdbc.article.Article;
 import kr.mjc.youngil.java.jdbc.article.ArticleDao;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.util.List;
-
 @Slf4j
-public class ListArticleEx {
+public class DeleteArticleEx {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         ArticleDao articleDao = context.getBean(ArticleDao.class);
-        List<Article> articleList = articleDao.listArticles(0, 10);
-        for (Article article : articleList) {
-            log.debug(article.toString());
-        }
+
+        int isUpdated = articleDao.deleteArticle(409, 494);
+        if (isUpdated > 0) log.info("삭제 완료!");
+        else log.debug("삭제 실패!");
     }
 }

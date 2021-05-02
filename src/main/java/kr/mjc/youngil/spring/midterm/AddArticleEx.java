@@ -2,9 +2,11 @@ package kr.mjc.youngil.spring.midterm;
 
 import kr.mjc.youngil.java.jdbc.article.Article;
 import kr.mjc.youngil.java.jdbc.article.ArticleDao;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+@Slf4j
 public class AddArticleEx {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
@@ -18,7 +20,7 @@ public class AddArticleEx {
         article.setName("오우오우");
         article.setUserId(494);
         articleDao.addArticle(article);
-        System.out.println("글을 저장했다!");
+        log.debug("글을 저장했습니다. title= {}", article.getTitle());
 
     }
 }

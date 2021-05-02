@@ -5,17 +5,19 @@ import kr.mjc.youngil.java.jdbc.article.ArticleDao;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import java.util.List;
+import org.springframework.dao.EmptyResultDataAccessException;
 
 @Slf4j
-public class ListArticleEx {
+public class GetArticleEx {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+
         ArticleDao articleDao = context.getBean(ArticleDao.class);
-        List<Article> articleList = articleDao.listArticles(0, 10);
-        for (Article article : articleList) {
-            log.debug(article.toString());
+        try {
+            Article article = articleDao.getArticle(404);
+            log.info(article.toString());
+        } catch (EmptyResultDataAccessException e) {
+            log.info("데이터가 없습니다.");
         }
     }
 }

@@ -27,8 +27,8 @@ public class GenericTest {
     // 3. 제네릭에 타입 인자를 넣지 않는 것을 raw type이라 한다.
     // 원래부터 제네릭이 아닌 것은 raw type이 아니다.
     // raw type을 사용할 수는 있지만 안쓰는 것이 좋다.
-    Box rawBox = new Box();
+    Box<Integer> rawBox = new Box<>();
     rawBox.set(5);
-    Integer n3 = (Integer) rawBox.get();
+    Integer n3 = rawBox.get();
   }
 }
