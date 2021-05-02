@@ -12,7 +12,7 @@ public interface ArticleDao {
   /**
    * 글 보기
    */
-  Article getArticle(int articleId);
+  default Article getArticle(int articleId){return null;}
 
   /**
    * 글 쓰기
@@ -22,10 +22,10 @@ public interface ArticleDao {
   /**
    * 글 수정
    */
-  int updateArticle(Article article);
+  default int updateArticle(Article article){return 0;}
 
   /**
    * 글 삭제
    */
-  int deleteArticle(int articleId, int userId);
+  default int deleteArticle(int articleId, int userId){return 0;}
 }

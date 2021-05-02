@@ -11,24 +11,23 @@ import java.util.Properties;
 
 public class ArticleDaoImpl implements ArticleDao {
 
-  private static final String LIST_ARTICLES =
-      "select articleId, title, userId, name, left(cdate,16) cdate " +
-          "from article order by articleId desc limit ?,?";
+  private static final String LIST_ARTICLES = """
+      select articleId, title, userId, name, left(cdate,16) cdate
+      from article order by articleId desc limit ?,?""";
 
-  private static final String GET_ARTICLE =
-      "select articleId, title, content, userId, name, " +
-          "left(cdate,16) cdate, left(udate,16) udate " +
-          "from article where articleId=?";
+  private static final String ADD_ARTICLE =
+          "insert article(title, content, userId, name) values(:title, :content, :userId, :name)";
 
-  private static final String ADD_ARTICLE
-      = "insert article(title, content, userId, name) values(?,?,?,?)";
+  private static final String GET_ARTICLE = """
+      select articleId, title, content, userId, name, left(cdate,16) cdate, left(udate,16) udate
+      from article where articleId=?""";
 
-  private static final String UPDATE_ARTICLE =
-      "update article set title=?, content=? " +
-          "where articleId=? and userId=?";
+  private static final String UPDATE_ARTICLE = """
+      update article set title=:title, content=:content
+      where articleId=:articleId and userId=:userId""";
 
-  private static final String DELETE_ARTICLE
-      = "delete from article where articleId=? and userId=?";
+  private static final String DELETE_ARTICLE =
+          "delete from article where articleId=? and userId=?";
 
   private DbUtils dbUtils;
 
